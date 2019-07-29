@@ -1,24 +1,39 @@
 
 
 public class Movie {
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
+
 
     private String title;
-    private int priceCode;
+    private MovieType movieType;
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        try {
+            this.movieType = MovieType.create(priceCode);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public int getPriceCode() {
-        return priceCode;
+        return this.movieType.getPriceCode();
     }
 
     public void setPriceCode(int code) {
-        priceCode = code;
+        try {
+            this.movieType = MovieType.create(code);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int rentalPoint(int daysRented){
+        return this.movieType.rentalPoint(daysRented);
+    }
+
+
+    public double countAmount( int days){
+        return  this.movieType.countAmount(days);
     }
 
     public String getTitle() {
@@ -26,3 +41,6 @@ public class Movie {
     }
 
 }
+
+
+

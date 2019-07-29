@@ -16,5 +16,16 @@ public class Rental {
         return movie;
     }
 
+    public int rentalPoint(){
+        return this.getMovie().rentalPoint(daysRented);
+    }
 
+
+    public double  countAmount() {
+        return  this.getMovie().countAmount(this.daysRented);
+    }
+
+    public String getTitle() {
+        return this.movie.getTitle();
+    }
 }
